@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rental Form</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Rental Form</h1>
+    <form action="#" th:action="@{/rental/receipt}" method="post" class="rental-form">
+        <div class="form-group">
+            <label for="toolCode">Tool Code:</label>
+            <select id="toolCode" name="toolCode" required>
+                <option value="" disabled selected>Select</option>
+                <option th:each="tool : ${tools}" th:value="${tool.code}" th:text="${tool.code} + ' - ' + ${tool.brand}"></option>
+            </select>
+            <!--<input type="text" id="toolCode" name="toolCode" required>-->
+        </div>
+        <div class="form-group">
+            <label for="rentalDays">Rental Days:</label>
+            <input type="number" id="rentalDays" name="rentalDays" required>
+        </div>
+        <div class="form-group">
+            <label for="discountPercent">Discount Percent:</label>
+            <input type="number" id="discountPercent" name="discountPercent" required>
+        </div>
+        <div class="form-group">
+            <label for="checkoutDate">Checkout Date:</label>
+            <input type="date" id="checkoutDate" name="checkoutDate" required th:value="${#temporals.format(today, 'yyyy-MM-dd')}">
+        </div>
+        <button type="submit">Generate Receipt</button>
+    </form>
+    <div th:if="${errorMessage}" class="error">
+        <p th:text="${errorMessage}"></p>
+    </div>
+</div>
+</body>
+</html>

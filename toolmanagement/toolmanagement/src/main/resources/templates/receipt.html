@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rental Receipt</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Rental Receipt</h1>
+    <div class="receipt">
+        <table>
+            <tr>
+                <th>Tool Code:</th>
+                <td th:text="${rentalAgreement.toolCode}"></td>
+            </tr>
+            <tr>
+                <th>Tool Type:</th>
+                <td th:text="${rentalAgreement.toolType}"></td>
+            </tr>
+            <tr>
+                <th>Tool Brand:</th>
+                <td th:text="${rentalAgreement.toolBrand}"></td>
+            </tr>
+            <tr>
+                <th>Rental Days:</th>
+                <td th:text="${rentalAgreement.rentalDays}"></td>
+            </tr>
+            <tr>
+                <th>Checkout Date:</th>
+                <td th:text="${#temporals.format(rentalAgreement.checkoutDate,'MM/dd/yyyy')}"></td>
+            </tr>
+            <tr>
+                <th>Due Date:</th>
+                <td th:text="${#temporals.format(rentalAgreement.dueDate,'MM/dd/yyyy')}"></td>
+            </tr>
+            <tr>
+                <th>Daily Rental Charge:</th>
+                <td th:text="'$'+${rentalAgreement.dailyRentalCharge}"></td>
+            </tr>
+            <tr>
+                <th>Charge Days:</th>
+                <td th:text="${rentalAgreement.chargeDays}"></td>
+            </tr>
+            <tr>
+                <th>Pre-Discount Charge:</th>
+                <td th:text="'$'+${rentalAgreement.preDiscountCharge}"></td>
+            </tr>
+            <tr>
+                <th>Discount Percent:</th>
+                <td th:text="${rentalAgreement.discountPercent}+'%'"></td>
+            </tr>
+            <tr>
+                <th>Discount Amount:</th>
+                <td th:text="'$'+${rentalAgreement.discountAmount}"></td>
+            </tr>
+            <tr>
+                <th>Final Charge:</th>
+                <td th:text="'$'+${rentalAgreement.finalCharge}"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
